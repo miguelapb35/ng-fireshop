@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { NavbarItem } from '../../models/NavbarItem';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'navbar-component',
@@ -13,7 +14,7 @@ export class NavbarComponent {
   @Input() _navbarType : string;
   @Input() _navbarNavigation : any;
 
-  constructor() {}
+  constructor(private auth: AuthService) {}
 
   callFunction(functionName: string) {
     if(this[functionName]) {
@@ -28,5 +29,10 @@ export class NavbarComponent {
   openAccount() {
     console.log('opened account!');
   }
+
+  logout() {
+    this.auth.logout();
+  }
+
 
 }

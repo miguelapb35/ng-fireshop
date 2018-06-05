@@ -21,7 +21,13 @@ export class LayoutComponent {
     this.navbarService.addSidenavItem('Home', '/');
     this.navbarService.addSidenavItem('Promotions', '/promotions');
     this.navbarService.addSidenavItem('Wish List', '/wish-list');
-    this.navbarService.addSidenavItem('Login', '/login');
+
+    if(this.auth.isLogged()) {
+      this.navbarService.addSidenavItem('Logout', ':logout');
+    } else {
+      this.navbarService.addSidenavItem('Login', '/login');
+    }
+    
     this.navbarService.setNavbarTitle('ANGUSHOP');
   }
 

@@ -14,8 +14,12 @@
 
 
   <mat-nav-list *ngIf="this._navbarType === 'sidenav'">
-    <a *ngFor="let navbarItem of this._navbarItems" mat-list-item routerLink="{{ navbarItem.uri }}" >
-      <mat-icon *ngIf="navbarItem.icon">{{ navbarItem.icon }}</mat-icon>
-      {{ navbarItem.title }}
-    </a>
+    <span  *ngFor="let navbarItem of this._navbarItems">
+        <a mat-list-item *ngIf="navbarItem.uri.charAt(0) !== ':'" href="{{ navbarItem.uri }}">
+            <mat-icon class="icon-lower" *ngIf="navbarItem.icon">{{ navbarItem.icon }}</mat-icon>{{ navbarItem.title }}
+          </a>
+        <a mat-list-item *ngIf="navbarItem.uri.charAt(0) === ':'" (click)="callFunction(navbarItem.uri.replace(':', ''))">
+            <mat-icon class="icon-lower" *ngIf="navbarItem.icon">{{ navbarItem.icon }}</mat-icon>{{ navbarItem.title }}
+          </a>
+    </span>
   </mat-nav-list>
