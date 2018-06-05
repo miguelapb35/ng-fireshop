@@ -14,7 +14,8 @@ import { ProductComponent } from './components/product/product.component';
     MaterialModule,
     RouterModule.forChild([
       { path: '', component: ProductsListComponent },
-      { path: 'product/:product_id', component: ProductComponent }
+      { path: 'product/:product_id', component: ProductComponent },
+      { path: 'product/:product_id/:variant', component: ProductComponent }
     ])
   ],
   declarations: [

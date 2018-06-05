@@ -1,0 +1,26 @@
+.top-margin {
+    margin-top: 30px;
+}
+
+.card {
+    width: 15em; 
+    display: inline-block; 
+    margin: 5px;
+    cursor: pointer;
+}
+
+.categories-card {
+    width: 300px; 
+    display: none;
+    margin-right: 10px;
+}
+
+.content-card {
+    width: 100%;
+    display: inline-block;
+}
+
+.content {
+    display: flex; 
+    justify-content: center;
+}
