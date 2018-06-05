@@ -2,16 +2,23 @@
     <mat-card class="content-card">
       <div style="display: flex; justify-content: center"> 
 
-          <mat-card routerLink="/product/{{ product.id }}" class="card" *ngFor="let product of this.products.getProducts()">
+          <mat-card class="card" *ngFor="let product of this.products.getProducts()">
+            <mat-card-title>
+                {{ product.name }}
+            </mat-card-title>
             <img mat-card-image src="{{ product.thumbnail }}">
             <mat-card-content>
-              <h3>{{ product.name }}</h3>
-              <mat-divider class="top-margin" [inset]=true></mat-divider>
-              <div class="top-margin">{{ product.price }} USD</div>
+              <div class="top-margin product-price">{{ product.price }} USD</div>
             </mat-card-content>
+            <mat-card-actions style="display: flex; justify-content: center">
+              <button mat-raised-button (click)="removeFromCart(product)">-</button>
+              <button mat-raised-button disabled>{{ getProductCountFromCart(product) }}</button>
+              <button mat-raised-button (click)="addToCart(product)">+</button>
+            </mat-card-actions>
           </mat-card>
     </div>
     </mat-card>
 </div>
+<!-- routerLink="/product/{{ product.id }}" -->
 
 

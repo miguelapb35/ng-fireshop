@@ -11,13 +11,13 @@ export class NavbarService {
 
   constructor() { }
 
-  public addNavbarItem(title: string, uri: string, icon ?: string) {
-    const link = { title: title, uri: uri, icon: (icon) ? icon : null };
+  public addNavbarItem(title: string, uri: string, icon ?: string, badge_count ?: number) {
+    const link = { title: title, uri: uri, icon: (icon) ? icon : null, badge_count: (badge_count) ? badge_count : null };
     this._navbarItems.push(link);
   }
 
-  public addSidenavItem(title: string, uri: string, icon ?: string) {
-    const link = { title: title, uri: uri, icon: (icon) ? icon : null };
+  public addSidenavItem(title: string, uri: string, icon ?: string, badge_count ?: number) {
+    const link = { title: title, uri: uri, icon: (icon) ? icon : null, badge_count: (badge_count) ? badge_count : null };
     this._sidenavItems.push(link);
   }
 

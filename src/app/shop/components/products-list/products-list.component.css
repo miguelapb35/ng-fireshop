@@ -2,25 +2,15 @@
     margin-top: 30px;
 }
 
+.product-price {
+    text-align: center;
+    font-weight: 400;
+    font-size: 2em;
+}
+
 .card {
-    width: 15em; 
+    width: 20em; 
     display: inline-block; 
     margin: 5px;
     cursor: pointer;
-}
-
-.categories-card {
-    width: 300px; 
-    display: none;
-    margin-right: 10px;
-}
-
-.content-card {
-    width: 100%;
-    display: inline-block;
-}
-
-.content {
-    display: flex; 
-    justify-content: center;
 }

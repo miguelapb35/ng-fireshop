@@ -4,10 +4,10 @@
     <h1 class="align-right"></h1>
     <h1 *ngFor="let navbarItem of this._navbarItems">
         <a *ngIf="navbarItem.uri.charAt(0) !== ':'" class="navbar-link" href="{{ navbarItem.uri }}">
-            <mat-icon class="icon-lower" *ngIf="navbarItem.icon">{{ navbarItem.icon }}</mat-icon>{{ navbarItem.title }}
+            <mat-icon [matBadgeHidden]="!navbarItem.badge_count" [matBadge]="navbarItem.badge_count" class="icon-lower" *ngIf="navbarItem.icon">{{ navbarItem.icon }}</mat-icon>{{ navbarItem.title }}
           </a>
           <a *ngIf="navbarItem.uri.charAt(0) === ':'" class="navbar-link" (click)="callFunction(navbarItem.uri.replace(':', ''))">
-            <mat-icon class="icon-lower" *ngIf="navbarItem.icon">{{ navbarItem.icon }}</mat-icon>{{ navbarItem.title }}
+            <mat-icon [matBadgeHidden]="!navbarItem.badge_count" [matBadge]="navbarItem.badge_count" class="icon-lower" *ngIf="navbarItem.icon">{{ navbarItem.icon }}</mat-icon>{{ navbarItem.title }}
           </a>
     </h1>
   </mat-toolbar>
