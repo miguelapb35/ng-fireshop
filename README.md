@@ -2,7 +2,7 @@
 
 ## General Informations 
 Simple library that turns angular app into PWA eCommerce shop.   
-To install that library simple type:   
+To install that library type in console:   
 
 ```
 git clone https://github.com/WebEferen/ng-fireshop.git

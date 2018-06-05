@@ -1,27 +1,30 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
+
 import { AngularFireModule } from 'angularfire2';
-
-import { CoreModule } from './core/core.module';
-
-import { environment } from '../environments/environment';
-import { LayoutComponent } from './core/components/layout/layout.component';
-
-import { AuthService } from './core/services/auth.service';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFirestore } from 'angularfire2/firestore';
-import { AuthGuard } from './core/guards/auth.guard';
+
+import { MaterialModule } from './material/material.module';
+import { CoreModule } from './core/core.module';
+
+import { LayoutComponent } from './core/components/layout/layout.component';
+import { environment } from '../environments/environment';
+import { ShopModule } from './shop/shop.module';
+
 
 @NgModule({
   declarations: [],
   imports: [
     BrowserModule,
+    MaterialModule,
     CoreModule,
+    ShopModule,
     AngularFireModule.initializeApp(environment.firebase),
     RouterModule.forRoot([]),
   ],
-  providers: [AngularFireAuth, AngularFirestore, AuthService],
+  providers: [AngularFireAuth, AngularFirestore],
   bootstrap: [LayoutComponent]
 })
 export class AppModule {}
