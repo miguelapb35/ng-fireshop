@@ -15,26 +15,32 @@ In there replace the firebase config to yours obtained from: [Google Firebase Co
 Code should look similar this:   
 
 ```javascript
-firebase: {
+export const environment = {
+  ...
+  firebase: {
     apiKey: "YOUR API KEY",
     authDomain: "YOUR DOMAIN URI",
     databaseURL: "DATABASE URI",
     projectId: "PROJECT ID",
     storageBucket: "STORAGE BUCKET URI",
     messagingSenderId: "SENDER ID"
-}
+  }
+};
 ```
 
 ## Configure Stripe
 If you want to use Stripe as the payment provider then simply replace the stripe key in the **enviorement.ts** or **enviorement.prod.ts** file.   
-Stripe **publishable key** should be obtained from: [Stripe Public Key](https://dashboard.stripe.com/account/apikeys).   
+Stripe **publishable key** should be obtained from: [Stripe Publishable Key](https://dashboard.stripe.com/account/apikeys).   
 
 Code should look similar this:   
 
 ```javascript
-stripe: {
-    key: "YOUR STRIPE PUBLISHABLE KEY"
-}
+export const environment = {
+  ...
+  stripe: {
+      publishable_key: "KEY"
+  }
+};
 ```
 ## Authors
 

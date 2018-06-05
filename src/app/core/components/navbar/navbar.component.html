@@ -1,0 +1,21 @@
+<mat-toolbar *ngIf="this._navbarType === 'toolbar'" color="primary" class="toolbar">
+    <button mat-icon-button (click)="this._navbarNavigation.toggle()"><mat-icon>menu</mat-icon></button>
+    <h1 class="navbar-link">{{ this._navbarTitle }}</h1>
+    <h1 class="align-right"></h1>
+    <h1 *ngFor="let navbarItem of this._navbarItems">
+        <a *ngIf="navbarItem.uri.charAt(0) !== ':'" class="navbar-link" href="{{ navbarItem.uri }}">
+            <mat-icon class="icon-lower" *ngIf="navbarItem.icon">{{ navbarItem.icon }}</mat-icon>{{ navbarItem.title }}
+          </a>
+          <a *ngIf="navbarItem.uri.charAt(0) === ':'" class="navbar-link" (click)="callFunction(navbarItem.uri.replace(':', ''))">
+            <mat-icon class="icon-lower" *ngIf="navbarItem.icon">{{ navbarItem.icon }}</mat-icon>{{ navbarItem.title }}
+          </a>
+    </h1>
+  </mat-toolbar>
+
+
+  <mat-nav-list *ngIf="this._navbarType === 'sidenav'">
+    <a *ngFor="let navbarItem of this._navbarItems" mat-list-item routerLink="{{ navbarItem.uri }}" >
+      <mat-icon *ngIf="navbarItem.icon">{{ navbarItem.icon }}</mat-icon>
+      {{ navbarItem.title }}
+    </a>
+  </mat-nav-list>

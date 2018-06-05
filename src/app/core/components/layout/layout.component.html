@@ -1,0 +1,20 @@
+<mat-sidenav-container class="toolbar-container">
+  <mat-sidenav #sidenav mode="push" style="min-width: 200px">
+    <navbar-component 
+      _navbarType="sidenav" 
+      [_navbarItems]="navbar('getSidenavItems')">
+    </navbar-component>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <navbar-component 
+      _navbarType="toolbar" 
+      [_navbarNavigation]="sidenav" 
+      [_navbarItems]="navbar('getNavbarItems')" 
+      [_navbarTitle]="navbar('getNavbarTitle')">
+    </navbar-component>
+    <div id="content">
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>
