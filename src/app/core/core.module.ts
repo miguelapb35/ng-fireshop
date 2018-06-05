@@ -20,9 +20,9 @@ import { AuthGuard } from './guards/auth.guard';
     ])
   ],
   declarations: [
-    LoginComponent, 
-    NavbarComponent, 
-    LayoutComponent,
+    LoginComponent,
+    NavbarComponent,
+    LayoutComponent
   ],
   providers: [AuthService, AuthGuard]
 })

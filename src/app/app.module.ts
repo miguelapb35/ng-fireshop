@@ -19,8 +19,8 @@ import { ShopModule } from './shop/shop.module';
   imports: [
     BrowserModule,
     MaterialModule,
-    CoreModule,
     ShopModule,
+    CoreModule,
     AngularFireModule.initializeApp(environment.firebase),
     RouterModule.forRoot([]),
   ],

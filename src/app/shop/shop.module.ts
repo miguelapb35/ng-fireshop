@@ -7,6 +7,7 @@ import { AuthGuard } from '../core/guards/auth.guard';
 
 import { ProductsListComponent } from './components/products-list/products-list.component';
 import { ProductComponent } from './components/product/product.component';
+import { CartComponent } from './components/cart/cart.component';
 
 
 @NgModule({
@@ -19,10 +20,12 @@ import { ProductComponent } from './components/product/product.component';
     ])
   ],
   declarations: [
-    ProductsListComponent, 
-    ProductComponent
+    CartComponent,
+    ProductsListComponent,
+    ProductComponent,
   ],
   exports: [
+    CartComponent,
     ProductsListComponent
   ],
   providers: [AuthService, AuthGuard]

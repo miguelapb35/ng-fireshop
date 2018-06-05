@@ -10,8 +10,21 @@
             <mat-icon [matBadgeHidden]="!navbarItem.badge_count" [matBadge]="navbarItem.badge_count" class="icon-lower" *ngIf="navbarItem.icon">{{ navbarItem.icon }}</mat-icon>{{ navbarItem.title }}
           </a>
     </h1>
+  <h1>
+    <a class="navbar-link" (click)="callFunction('openCart')">
+      <mat-icon [matBadgeHidden]="this.cart.count() === 0" [matBadge]="this.cart.count()" class="icon-lower">shopping_cart</mat-icon>
+    </a>
+  </h1>
   </mat-toolbar>
 
+  <div class="cart-box" *ngIf="this._cartOpened">
+    <div class="cart-header">Current Cart <div class="cart-sep">:</div> <div class="cart-right cart-sep">{{ this.cart.getAll().total_price }} USD</div></div>
+    <div class="cart-items">
+      <div *ngFor="let product of this.cart.getAllParsed()">
+        <div><span class="cart-link" routerLink="/product/{{ product.product.id }}">{{ product.product.name }}</span> <div class="cart-sep">x{{ product.quantity }}</div> <div class="cart-right cart-sep">{{ product.product.price * product.quantity }} USD</div></div>
+      </div>
+    </div>
+  </div>
 
   <mat-nav-list *ngIf="this._navbarType === 'sidenav'">
     <span  *ngFor="let navbarItem of this._navbarItems">

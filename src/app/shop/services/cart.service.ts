@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Cart } from '../models/Cart';
 import { Product } from '../models/Product';
 import { CartProduct } from '../models/CartProduct';
+import {current} from 'codelyzer/util/syntaxKind';
 
 @Injectable({
   providedIn: 'root'
@@ -14,24 +15,34 @@ export class CartService {
   }
 
   public add(product : Product) {
-    
-    const currentCart = this.getFromStorage(); 
-    (currentCart.products[product.id]) ? 
-      currentCart.products[product.id].quantity += 1 : 
-      currentCart.products[product.id] = { quantity: 1, product: product};
-    currentCart.total_price += product.price;
-    this.setToStorage(currentCart);
+    const currentCart = this.getFromStorage();
+    if(product.stock > 0) {
+      if (currentCart.products[product.id]) {
+        if (currentCart.products[product.id].quantity < product.stock) {
+          currentCart.products[product.id].quantity += 1;
+          currentCart.total_price += product.price;
+          this.setToStorage(currentCart);
+          return true;
+        }
+        return true;
+      }
+      currentCart.products[product.id] = {quantity: 1, product: product};
+      currentCart.total_price += product.price;
+      this.setToStorage(currentCart);
+      return true;
+    }
+    return false;
   }
 
   public remove(product : Product) {
     const currentCart = this.getAll();
     if(currentCart.products[product.id]) {
-      (currentCart.products[product.id].quantity !== 1) ? 
-        currentCart.products[product.id].quantity -= 1 : 
+      (currentCart.products[product.id].quantity !== 1) ?
+        currentCart.products[product.id].quantity -= 1 :
         delete(currentCart.products[product.id]);
 
-      (currentCart.total_price - product.price >= 0) ? 
-        currentCart.total_price -= product.price : 
+      (currentCart.total_price - product.price >= 0) ?
+        currentCart.total_price -= product.price :
         currentCart.total_price = 0;
       this.setToStorage(currentCart);
     }
@@ -40,6 +51,19 @@ export class CartService {
   public getAll() {
     return <Cart> this.getFromStorage();
   }
+
+  public getAllParsed() {
+    const cartArray = [];
+    const cartProducts = this.getFromStorage().products;
+    for (let cartProductKey in cartProducts) {
+      if(cartProducts.hasOwnProperty(cartProductKey)) {
+        cartArray.push(cartProducts[cartProductKey]);
+      }
+    }
+    console.log(cartArray);
+    return cartArray;
+  }
+
 
   public get(productId : string) {
     const currentCart = this.getFromStorage();
