@@ -3,7 +3,6 @@ import { Injectable } from '@angular/core';
 import { Cart } from '../models/Cart';
 import { Product } from '../models/Product';
 import { CartProduct } from '../models/CartProduct';
-import {current} from 'codelyzer/util/syntaxKind';
 
 @Injectable({
   providedIn: 'root'
